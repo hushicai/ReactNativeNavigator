@@ -19,7 +19,7 @@ var ReactNativeNavigator = React.createClass({
             case 'x':
                 return (
                     <View style={styles.container}>
-                        <Text style={styles.text} onPress={() => {
+                        <Text style={styles.second} onPress={() => {
                             navigator.push({id: 'y'});
                         }}>
                             second scene
@@ -29,7 +29,7 @@ var ReactNativeNavigator = React.createClass({
             case 'y':
                 return (
                     <View style={styles.container}>
-                        <Text style={styles.text} onPress={() => {
+                        <Text style={styles.third} onPress={() => {
                             navigator.popToTop();
                         }}>
                             third scene
@@ -39,7 +39,7 @@ var ReactNativeNavigator = React.createClass({
             default:
                 return (
                     <View style={styles.container}>
-                        <Text style={styles.text} onPress={() => {
+                        <Text style={styles.first} onPress={() => {
                             navigator.push({id: 'x'});
                         }}>
                             {route.message}
@@ -75,8 +75,17 @@ var styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
-    text: {
-        fontSize: 20
+    first: {
+        fontSize: 20,
+        color: 'red'
+    },
+    second: {
+        fontSize: 30,
+        color: 'green'
+    },
+    third: {
+        fontSize: 40,
+        color: 'blue'
     }
 });
 
