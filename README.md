@@ -9,4 +9,4 @@ npm install
 open ReactNativeNavigator.xcodeproj
 ```
 
-![MySceneComponent](./images/MySceneComponent.png)
+<img src="./images/MySceneComponent.png" width="320" />
