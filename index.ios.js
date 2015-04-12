@@ -41,15 +41,16 @@ var ReactNativeNavigator = React.createClass({
         // 但React Component貌似有一个`ref`属性（可以是字符串，也可以是一个函数）
         //
         // 尼玛`Navigator`文档中的ref到底怎么翻译好？
-        console.log(ref.props);
+        console.log(ref);
     },
     render: function() {
         return (
             <Navigator
                 initialRoute={{name: 'My First Scene', index: 0}}
                 onItemRef={this._onRef}
-                renderScene={(route, navigator) =>
+                renderScene={(route, navigator, onRef) =>
                     <MySceneComponent
+                        ref={onRef}
                         name={route.name}
                         onForward={() => {
                             var nextIndex = route.index + 1;
