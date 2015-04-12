@@ -18,8 +18,8 @@ class MySceneComponent extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.navbar}>
-                    <Text style={styles.back} onPress={this.props.onBack}>&lt;</Text>
-                    <Text style={styles.forward} onPress={this.props.onForward}>&gt;</Text>
+                    <Text style={[styles.base, styles.back]} onPress={this.props.onBack}>&lt;</Text>
+                    <Text style={[styles.base, styles.forward]} onPress={this.props.onForward}>&gt;</Text>
                 </View>
                 <View>
                     <Text>{this.props.name}</Text>
@@ -68,11 +68,15 @@ var ReactNativeNavigator = React.createClass({
 var styles = StyleSheet.create({
     container: {
         marginTop: 100,
-        padding: 10
+        padding: 20
     },
     navbar: {
         flexDirection: 'row',
         marginBottom: 30,
+    },
+    base: {
+        fontSize: 20,
+        color: 'blue'
     },
     back: {
         flex: 1
