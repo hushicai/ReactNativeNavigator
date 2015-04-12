@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>FA2153E0-96FC-4D8B-B1CB-043E9ECD2B44</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>ReactNativeNavigator</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A90E137CF67D5E6A4ACDAF2EE4E5D519BCE1CD75</key>
 		<string>github.com:hushicai/ReactNativeNavigator.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ReactNativeNavigator.xcodeproj/project.xcworkspace</string>
+	<string>ReactNativeNavigator.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A90E137CF67D5E6A4ACDAF2EE4E5D519BCE1CD75</key>
