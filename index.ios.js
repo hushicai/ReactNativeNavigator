@@ -13,50 +13,47 @@ var {
     View,
 } = React;
 
+class MySceneComponent extends React.Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                <View style={styles.navbar}>
+                    <Text style={styles.back} onPress={this.props.onBack}>&lt;</Text>
+                    <Text style={styles.forward} onPress={this.props.onForward}>&gt;</Text>
+                </View>
+                <View>
+                    <Text>{this.props.name}</Text>
+                </View>
+            </View>
+        );
+    }
+}
+
 var ReactNativeNavigator = React.createClass({
-    _renderScene: function (route, navigator, onRef) {
-        switch (route.id) {
-            case 'x':
-                return (
-                    <View style={styles.container}>
-                        <Text style={styles.second} onPress={() => {
-                            navigator.push({id: 'y'});
-                        }}>
-                            second scene
-                        </Text>
-                    </View>
-                );
-            case 'y':
-                return (
-                    <View style={styles.container}>
-                        <Text style={styles.third} onPress={() => {
-                            navigator.popToTop();
-                        }}>
-                            third scene
-                        </Text>
-                    </View>
-                );
-            default:
-                return (
-                    <View style={styles.container}>
-                        <Text style={styles.first} onPress={() => {
-                            navigator.push({id: 'x'});
-                        }}>
-                            {route.message}
-                        </Text>
-                    </View>
-                );
-        }
-    },
     _onRef: function (ref, indexInStack) {
         console.log(ref, indexInStack);
     },
     render: function() {
         return (
-            <Navigator 
-                initialRoute={{message: 'first scene'}}
-                renderScene={this._renderScene}
-                onItemRef={this._onRef}
+            <Navigator
+                initialRoute={{name: 'My First Scene', index: 0}}
+                renderScene={(route, navigator) =>
+                    <MySceneComponent
+                        name={route.name}
+                        onForward={() => {
+                            var nextIndex = route.index + 1;
+                            navigator.push({
+                                name: 'Scene ' + nextIndex,
+                                index: nextIndex,
+                            });
+                        }}
+                        onBack={() => {
+                            if (route.index > 0) {
+                                navigator.pop();
+                            }
+                        }}
+                    />
+                }
                 configureScene={(route) => {
                     if (route.sceneConfig) {
                         return route.sceneConfig;
@@ -70,23 +67,17 @@ var ReactNativeNavigator = React.createClass({
 
 var styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        marginTop: 100,
+        padding: 10
     },
-    first: {
-        fontSize: 20,
-        color: 'red'
+    navbar: {
+        flexDirection: 'row',
+        marginBottom: 30,
     },
-    second: {
-        fontSize: 30,
-        color: 'green'
+    back: {
+        flex: 1
     },
-    third: {
-        fontSize: 40,
-        color: 'blue'
-    }
+    forward: {}
 });
 
 AppRegistry.registerComponent('ReactNativeNavigator', () => ReactNativeNavigator);
